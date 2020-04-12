@@ -1,0 +1,50 @@
+
+THIS IS MP FOCUSED SO LOCALLITY OF MARKERS AND VARS ARE IMPORTANT
+
+Generate a unit with it's varSpace being represented by an in-game object. (Avoid using AI due to performance concern, but also to avoid using their pathfinding.)
+
+Allow a unit to be spawned and deleted during runtime.
+
+Allow a player to select units and assign movement with right clicks, with shift right-clicking generating a queue of targetpositions.
+
+Double clicking on a unit to open a GUI (For now just have a method to rename the marker, this can be worked on at a later date)
+
+Each unit will be assigned a 'side' (Doesn't have to follow typical blufor,opfor,indep) each player will also have be assigned the sides
+the they are capable of controlling and viewing.
+
+Each player can only see their unit's side. Unit's will have a recceRange that will reveal units within _x metres/grids of itself to the owner.
+This can be effected by unit's elevation up to 140% of the original amount.
+
+Things to consider:
+
+Local markers but global varSpaces/Object for the revealing system.
+Revealing system will be togglable but for now use revealSystem = T/F
+
+Movement doesn't need to be a smart AI that follows roads (However if it can be done reasonably why not, otherwise can be completed later) 
+Attempt to use Bresenhams line algorithm in worst case scenario.
+
+No need to select multiple unit's at once, and if possible avoid overlapping units.
+
+Timescale : A global var to define the speed of simulation.
+
+Draw a path of a unit only when they are selected.
+
+If a unit is selected and another unit is right clicked cause an event, hint format "%1 : %2",_selectedUnit,_targetUnit]
+
+
+////
+
+Movement traits/features
+
+isAmphibious : T/F  can it move on water?
+isAir : T/F can it ignore terrain features?
+
+landSpeed : Unit speed on land 
+waterSpeed : Unit speed on water
+airSpeed : Unit speed in air
+
+Terrain, if the unit is traveling uphill, (Elevations such as mountains, avoid applying on hills) have upto 80% modifer applied.
+Roads, if a unit is within 8m of a road apply a bonus 20% to speed.
+Unit speed, 3 toggable states, slow,moderate and fast (Walk,Jog,Dash) Walk = 60% Speed | Jog =  100% Speed | Dash = 120% Speed
+Forests, if the unit is nearby _x amount of tree they are considered in a forest, recceRange will be halved along with halving other elements ability to see that Unit.
+
