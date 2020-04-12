@@ -1,0 +1,14 @@
+
+class cfgFunctions
+{
+ class MapManagement
+ {
+  tag = "MMP";
+  class core
+  {
+   file = "scripts\";
+   class getUnitMarker {};
+   class markerMovementInit{};
+  };
+ };
+};
